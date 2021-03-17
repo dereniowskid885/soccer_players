@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <TextBlock Text="TextBlock" DockPanel.Dock="Left" x:Name="poleTekstowe"/>
+            <Button Content="Przycisk" DockPanel.Dock="Bottom" Click="Button_Click"/>
+            <Slider Width="100" DockPanel.Dock="Top"/>
+            <TextBox Text="TetxBox" Background="Blue" Foreground="White" 
+                     DockPanel.Dock="Top" TextChanged="TextBox_ZmianaTekstu"
+                     x:Name="tb_imie"/>
+            <TextBox Text="TetxBox" Background="Blue" Foreground="White" 
+                     DockPanel.Dock="Top" TextChanged="TextBox_ZmianaTekstu"
+                     x:Name="tb_nazwisko"/>
+            <ListBox x:Name="listBox_studenci">
+            </ListBox>
+        </DockPanel>
+    </Grid>
+</Window>
