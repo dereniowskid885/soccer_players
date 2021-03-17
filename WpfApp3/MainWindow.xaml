@@ -5,28 +5,171 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="soccer_players" Height="450" Width="800" ResizeMode="CanMinimize">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <DockPanel>
-            <TextBlock Text="TextBlock" DockPanel.Dock="Left" x:Name="poleTekstowe"/>
-            <Button Content="Przycisk" DockPanel.Dock="Bottom" Click="Button_Click"/>
-            <Slider Width="100" DockPanel.Dock="Top"/>
-            <TextBox Text="TetxBox" Background="Blue" Foreground="White" 
-                     DockPanel.Dock="Top" TextChanged="TextBox_ZmianaTekstu"
-                     x:Name="tb_imie"/>
-            <TextBox Text="TetxBox" Background="Blue" Foreground="White" 
-                     DockPanel.Dock="Top" TextChanged="TextBox_ZmianaTekstu"
-                     x:Name="tb_nazwisko"/>
-            <ListBox x:Name="listBox_studenci">
-            </ListBox>
-        </DockPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Imie: " 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBox x:Name="name_text_box"
+                                   FontSize="15" 
+                                   TextAlignment="Center"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Nazwisko: " 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBox x:Name="surname_text_box"
+                                   FontSize="15" 
+                                   TextAlignment="Center"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Wiek: " 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <TextBlock x:Name="age_text_block"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Slider x:Name="age_slider" VerticalAlignment="Center" ValueChanged="age_slider_ValueChanged" SmallChange="1" Minimum="1" Maximum="100" SelectionEnd="1" SelectionStart="100" Value="3"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Waga: " 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Slider x:Name="weight_slider" VerticalAlignment="Center" ValueChanged="weight_slider_ValueChanged"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <TextBlock x:Name="weight_text_block"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Wzrost: " 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBox x:Name="height_text_box"
+                                   FontSize="15" 
+                                   TextAlignment="Center"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="5" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Klub: " 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   FontSize="10"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <ComboBox  x:Name="club_combo_box"
+                                   FontSize="15">
+                            <ComboBoxItem Content="Real Madryt" HorizontalAlignment="Left" Width="146"/>
+                            <ComboBoxItem Content="FC Barcelona" HorizontalAlignment="Left" Width="146"/>
+                            <ComboBoxItem Content="Chelsea London" HorizontalAlignment="Left" Width="146"/>
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="6" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="add_button"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Width="190" Height="20" Content="Dodaj" Click="add_button_Click"/>
+                </Grid>
+                <Grid Grid.Row="7" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="edit_button"
+                            Width="190" Height="20"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center" Content="Edytuj"/>
+                </Grid>
+                <Grid Grid.Row="8" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="delete_button"
+                            Width="190" Height="20"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center" Content="Usuń"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

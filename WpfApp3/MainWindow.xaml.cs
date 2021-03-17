@@ -21,28 +21,23 @@ namespace WpfApp3
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Student> listaStudentow = new ObservableCollection<Student>();
-
         public MainWindow()
         {
             InitializeComponent();
-
-            listaStudentow.Add(new Student("Janusz", "Nowak"));
-            listaStudentow.Add(new Student("Krzysztof", "Piątek"));
-
-            listBox_studenci.ItemsSource = listaStudentow;
+        }
+        private void add_button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"{name_text_box.Text}");
         }
 
-        private void TextBox_ZmianaTekstu(object sender, TextChangedEventArgs e)
+        private void age_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            poleTekstowe.Text = ((TextBox)sender).Text;
+            age_text_block.Text = age_slider.Value.ToString();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void weight_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Student student = new Student(tb_imie.Text, tb_nazwisko.Text);
-            //listBox_studenci.Items.Add(student);
-            listaStudentow.Add(student);
+            weight_text_block.Text = weight_slider.Value.ToString();
         }
     }
 }
