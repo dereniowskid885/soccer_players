@@ -71,8 +71,12 @@ namespace WpfApp3
 
                     if (not_exists)
                     {
-                        players_list_box.Items.Add(player);
-                        clearForm();
+                        if (club_combo_box.SelectedIndex > -1)
+                        {
+                            players_list_box.Items.Add(player);
+                            clearForm();
+                        }
+                        else MessageBox.Show("Wybierz klub dla swojego piłkarza");
                     }
                     else MessageBox.Show("Piłkarz znajduję się już na liście");
                 }
@@ -94,15 +98,54 @@ namespace WpfApp3
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (File.Exists(file))
+            {
+                var lines = File.ReadAllLines(file);
 
+                foreach(var line in lines)
+                {
+                    var playerContent = line.Split(' ');
+                    var player = new Player(playerContent[0], playerContent[1], int.Parse(playerContent[2]), int.Parse(playerContent[4]), int.Parse(playerContent[6]), playerContent[8]+" "+playerContent[9]);
+                    players_list_box.Items.Add(player);
+                }
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (File.Exists(file))
+                File.Delete(file);
+
             foreach (Player p in players_list_box.Items)
             {
                 File.AppendAllText(file, p.ToString() + Environment.NewLine);
             }
+        }
+
+        private void players_list_box_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (players_list_box.SelectedIndex > -1)
+            {
+                var player = (Player)players_list_box.SelectedItem;
+
+                name_text_box.Text = player.Name;
+                surname_text_box.Text = player.Surname;
+                height_text_box.Text = player.Height.ToString();
+
+                weight_slider.Value = player.Weight;
+                age_slider.Value = player.Age;
+                club_combo_box.Text = player.Club;
+            }
+        }
+
+        private void edit_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void delete_button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

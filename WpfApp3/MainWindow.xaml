@@ -170,7 +170,7 @@
                     <Button x:Name="edit_button"
                             Width="190" Height="20"
                             HorizontalAlignment="Right"
-                            VerticalAlignment="Center" Content="Edytuj"/>
+                            VerticalAlignment="Center" Content="Edytuj" Click="edit_button_Click"/>
                 </Grid>
                 <Grid Grid.Row="8" Height="30">
                     <Grid.ColumnDefinitions>
@@ -183,7 +183,7 @@
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
-                <ListBox x:Name="players_list_box" Margin="10, 8, 0, 0"></ListBox>
+                <ListBox x:Name="players_list_box" Margin="10, 8, 0, 0" SelectionChanged="players_list_box_SelectionChanged"></ListBox>
             </Grid>
         </Grid>
     </Grid>
