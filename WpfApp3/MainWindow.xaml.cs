@@ -146,15 +146,13 @@ namespace WpfApp3
                 if (name_text_box.Text != "" & surname_text_box.Text != "")
                 {
                     Player player = new Player(name_text_box.Text, surname_text_box.Text, (int)age_slider.Value, (int)weight_slider.Value, height, club_combo_box.Text);
-                    if (players_list_box.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Wybierz piłkarza do edycji");
-                    }
-                    else
+                    if (players_list_box.SelectedIndex > -1)
                     {
                         players_list_box.Items[players_list_box.SelectedIndex] = player;
                         clearForm();
                     }
+                    else MessageBox.Show("Wybierz piłkarza do edycji");
+                   
                 }
             }
             else
@@ -165,8 +163,16 @@ namespace WpfApp3
 
         private void delete_button_Click(object sender, RoutedEventArgs e)
         {
-            players_list_box.Items.Remove(players_list_box.SelectedItem);
-            clearForm();
+            if (players_list_box.SelectedIndex > -1)
+            {
+                var result = MessageBox.Show("Czy na pewno chcesz usunąc piłkarza z listy?", "Usuń", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    players_list_box.Items.Remove(players_list_box.SelectedItem);
+                    clearForm();
+                }
+            } else MessageBox.Show("Wybierz piłkarza do usunięcia");
         }
     }
 }
