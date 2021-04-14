@@ -179,7 +179,7 @@
                     <Button x:Name="delete_button"
                             Width="190" Height="20"
                             HorizontalAlignment="Right"
-                            VerticalAlignment="Center" Content="Usuń"/>
+                            VerticalAlignment="Center" Content="Usuń" Click="delete_button_Click"/>
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
