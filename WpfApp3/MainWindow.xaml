@@ -4,190 +4,210 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
-        xmlns:prop="clr-namespace:WpfApp3.Properties"
         xmlns:lang="clr-namespace:WpfApp3.Properties.Lang"
         mc:Ignorable="d"
-        Title="{x:Static prop:Resources.WindowTitleText}"
+        Title="{x:Static lang:Lang.WindowTitleText}"
         Height="450" Width="800" ResizeMode="CanMinimize"
         Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Imie: " 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom">
+                <ComboBox  x:Name="lang_combo_box" FontSize="10" Width="75" Margin="4 0 0 0">
+                    <ComboBoxItem Content="Polish" HorizontalAlignment="Left" Width="75" IsSelected="True"/>
+                    <ComboBoxItem Content="English" HorizontalAlignment="Left" Width="75"/>
+                    <ComboBoxItem Content="German" HorizontalAlignment="Left" Width="75"/>
+                </ComboBox>
+                <Button x:Name="lang_button"
+                                Width="109" Height="19"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center" 
+                                Content="{x:Static lang:Lang.lang_button}"
+                                Click="lang_button_Click"/>
+            </StatusBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="4 0 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="{x:Static lang:Lang.name_text_block}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBox x:Name="name_text_box"
+                                       FontSize="15" 
+                                       TextAlignment="Center"/>
+                        </Grid>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <TextBox x:Name="name_text_box"
-                                   FontSize="15" 
-                                   TextAlignment="Center"/>
+                    <Grid Grid.Row="1" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="{x:Static lang:Lang.surname_text_block}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBox x:Name="surname_text_box"
+                                       FontSize="15" 
+                                       TextAlignment="Center"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid Grid.Row="1" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Nazwisko: " 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
+                    <Grid Grid.Row="2" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="{x:Static lang:Lang.age_text_block}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <TextBlock x:Name="age_text_block"
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Slider x:Name="age_slider"
+                                    VerticalAlignment="Center"
+                                    ValueChanged="age_slider_ValueChanged"
+                                    Margin="5"
+                                    Minimum="15" 
+                                    Maximum="60"
+                                    Value="15"
+                                    IsSnapToTickEnabled="True"/>
+                        </Grid>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <TextBox x:Name="surname_text_box"
-                                   FontSize="15" 
-                                   TextAlignment="Center"/>
+                    <Grid Grid.Row="3" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="{x:Static lang:Lang.weight_text_block}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <TextBlock x:Name="weight_text_block"
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Slider x:Name="weight_slider"
+                                    VerticalAlignment="Center"
+                                    ValueChanged="weight_slider_ValueChanged"
+                                    Minimum="30"
+                                    Maximum="150"
+                                    Value="30"
+                                    Margin="5"
+                                    IsSnapToTickEnabled="True"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid Grid.Row="2" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Wiek: " 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
+                    <Grid Grid.Row="4" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="{x:Static lang:Lang.height_text_block}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBox x:Name="height_text_box"
+                                       FontSize="15" 
+                                       TextAlignment="Center"/>
+                        </Grid>
                     </Grid>
-                    <Grid Grid.Column="2">
-                        <TextBlock x:Name="age_text_block"
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
+                    <Grid Grid.Row="5" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock Text="{x:Static lang:Lang.club_text_block}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       FontSize="10"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <ComboBox  x:Name="club_combo_box"
+                                       FontSize="15">
+                                <ComboBoxItem Content="Real Madryt" HorizontalAlignment="Left" Width="146" IsSelected="True"/>
+                                <ComboBoxItem Content="FC Barcelona" HorizontalAlignment="Left" Width="146"/>
+                                <ComboBoxItem Content="Chelsea London" HorizontalAlignment="Left" Width="146"/>
+                            </ComboBox>
+                        </Grid>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <Slider x:Name="age_slider"
+                    <Grid Grid.Row="6" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="add_button"
+                                HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
-                                ValueChanged="age_slider_ValueChanged"
-                                Margin="5"
-                                Minimum="15" 
-                                Maximum="60"
-                                Value="15"
-                                IsSnapToTickEnabled="True"/>
+                                Width="190" Height="20"
+                                Content="{x:Static lang:Lang.add_button}"
+                                Click="add_button_Click"/>
                     </Grid>
-                </Grid>
-                <Grid Grid.Row="3" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Waga: " 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
-                    </Grid>
-                    <Grid Grid.Column="2">
-                        <TextBlock x:Name="weight_text_block"
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Slider x:Name="weight_slider"
+                    <Grid Grid.Row="7" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="edit_button"
+                                Width="190" Height="20"
+                                HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
-                                ValueChanged="weight_slider_ValueChanged"
-                                Minimum="30"
-                                Maximum="150"
-                                Value="30"
-                                Margin="5"
-                                IsSnapToTickEnabled="True"/>
+                                Content="{x:Static lang:Lang.edit_button}"
+                                Click="edit_button_Click"/>
+                    </Grid>
+                    <Grid Grid.Row="8" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="delete_button"
+                                Width="190" Height="20"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center" 
+                                Content="{x:Static lang:Lang.delete_button}"
+                                Click="delete_button_Click"/>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="4" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Wzrost: " 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <TextBox x:Name="height_text_box"
-                                   FontSize="15" 
-                                   TextAlignment="Center"/>
-                    </Grid>
-                </Grid>
-                <Grid Grid.Row="5" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Klub: " 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontSize="10"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <ComboBox  x:Name="club_combo_box"
-                                   FontSize="15">
-                            <ComboBoxItem Content="Real Madryt" HorizontalAlignment="Left" Width="146" IsSelected="True"/>
-                            <ComboBoxItem Content="FC Barcelona" HorizontalAlignment="Left" Width="146"/>
-                            <ComboBoxItem Content="Chelsea London" HorizontalAlignment="Left" Width="146"/>
-                        </ComboBox>
-                    </Grid>
-                </Grid>
-                <Grid Grid.Row="6" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="add_button"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Width="190" Height="20" Content="Dodaj" Click="add_button_Click"/>
-                </Grid>
-                <Grid Grid.Row="7" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="edit_button"
-                            Width="190" Height="20"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center" Content="Edytuj" Click="edit_button_Click"/>
-                </Grid>
-                <Grid Grid.Row="8" Height="30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="delete_button"
-                            Width="190" Height="20"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center" Content="Usuń" Click="delete_button_Click"/>
+                <Grid Grid.Column="1">
+                    <ListBox x:Name="players_list_box" Margin="8, 7, 0, 0" SelectionChanged="players_list_box_SelectionChanged"></ListBox>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1">
-                <ListBox x:Name="players_list_box" Margin="10, 8, 0, 0" SelectionChanged="players_list_box_SelectionChanged"></ListBox>
-            </Grid>
-        </Grid>
+        </DockPanel>
     </Grid>
 </Window>

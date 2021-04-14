@@ -59,14 +59,5 @@ namespace WpfApp3.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Piłkarze.
-        /// </summary>
-        public static string WindowTitleText {
-            get {
-                return ResourceManager.GetString("WindowTitleText", resourceCulture);
-            }
-        }
     }
 }

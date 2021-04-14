@@ -59,5 +59,167 @@ namespace WpfApp3.Properties.Lang {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Dodaj.
+        /// </summary>
+        public static string add_button {
+            get {
+                return ResourceManager.GetString("add_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wiek: .
+        /// </summary>
+        public static string age_text_block {
+            get {
+                return ResourceManager.GetString("age_text_block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu  lat.
+        /// </summary>
+        public static string age1 {
+            get {
+                return ResourceManager.GetString("age1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu  lata.
+        /// </summary>
+        public static string age2 {
+            get {
+                return ResourceManager.GetString("age2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wybierz klub dla swojego piłkarza.
+        /// </summary>
+        public static string club_error_message {
+            get {
+                return ResourceManager.GetString("club_error_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Klub: .
+        /// </summary>
+        public static string club_text_block {
+            get {
+                return ResourceManager.GetString("club_text_block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Usuń.
+        /// </summary>
+        public static string delete_button {
+            get {
+                return ResourceManager.GetString("delete_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Czy na pewno chcesz usunąc piłkarza z listy?.
+        /// </summary>
+        public static string delete_confirm_message {
+            get {
+                return ResourceManager.GetString("delete_confirm_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Edytuj.
+        /// </summary>
+        public static string edit_button {
+            get {
+                return ResourceManager.GetString("edit_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wybierz piłkarza.
+        /// </summary>
+        public static string edit_player_error_message {
+            get {
+                return ResourceManager.GetString("edit_player_error_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wzrost zawiera błędne dane.
+        /// </summary>
+        public static string height_error_message {
+            get {
+                return ResourceManager.GetString("height_error_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wzrost: .
+        /// </summary>
+        public static string height_text_block {
+            get {
+                return ResourceManager.GetString("height_text_block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Zmień język.
+        /// </summary>
+        public static string lang_button {
+            get {
+                return ResourceManager.GetString("lang_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Imie: .
+        /// </summary>
+        public static string name_text_block {
+            get {
+                return ResourceManager.GetString("name_text_block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Piłkarz znajduję się już na liście.
+        /// </summary>
+        public static string player_add_error_message {
+            get {
+                return ResourceManager.GetString("player_add_error_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Nazwisko: .
+        /// </summary>
+        public static string surname_text_block {
+            get {
+                return ResourceManager.GetString("surname_text_block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Waga: .
+        /// </summary>
+        public static string weight_text_block {
+            get {
+                return ResourceManager.GetString("weight_text_block", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Piłkarze.
+        /// </summary>
+        public static string WindowTitleText {
+            get {
+                return ResourceManager.GetString("WindowTitleText", resourceCulture);
+            }
+        }
     }
 }

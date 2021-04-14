@@ -35,11 +35,11 @@ namespace WpfApp3
 
             if (r == 2 || r == 3 || r == 4)
             {
-                age_text_block.Text += " lata";
+                age_text_block.Text += Properties.Lang.Lang.age2;
             }
             else
             {
-                age_text_block.Text += " lat";
+                age_text_block.Text += Properties.Lang.Lang.age1;
             }
         }
 
@@ -75,12 +75,12 @@ namespace WpfApp3
                             players_list_box.Items.Add(player);
                             clearForm();
                         }
-                        else MessageBox.Show("Wybierz klub dla swojego piłkarza");
+                        else MessageBox.Show(Properties.Lang.Lang.club_error_message);
                     }
-                    else MessageBox.Show("Piłkarz znajduję się już na liście");
+                    else MessageBox.Show(Properties.Lang.Lang.player_add_error_message);
                 }
             }
-            else MessageBox.Show("Wzrost zawiera błędne dane");
+            else MessageBox.Show(Properties.Lang.Lang.height_error_message);
         }
 
         public void clearForm()
@@ -165,12 +165,12 @@ namespace WpfApp3
                         players_list_box.Items[players_list_box.SelectedIndex] = player;
                         clearForm();
                     }
-                    else MessageBox.Show("Wybierz piłkarza do edycji");
+                    else MessageBox.Show(Properties.Lang.Lang.edit_player_error_message);
                 }
             }
             else
             {
-                MessageBox.Show("Wybierz piłkarza do edycji");
+                MessageBox.Show(Properties.Lang.Lang.edit_player_error_message);
             }
         }
 
@@ -178,14 +178,34 @@ namespace WpfApp3
         {
             if (players_list_box.SelectedIndex > -1)
             {
-                var result = MessageBox.Show("Czy na pewno chcesz usunąc piłkarza z listy?", "Usuń", MessageBoxButton.YesNo);
+                var result = MessageBox.Show(Properties.Lang.Lang.delete_confirm_message, Properties.Lang.Lang.delete_button, MessageBoxButton.YesNo);
 
                 if (result == MessageBoxResult.Yes)
                 {
                     players_list_box.Items.Remove(players_list_box.SelectedItem);
                     clearForm();
                 }
-            } else MessageBox.Show("Wybierz piłkarza do usunięcia");
+            } else MessageBox.Show(Properties.Lang.Lang.edit_player_error_message);
+        }
+
+        private void lang_button_Click(object sender, RoutedEventArgs e)
+        {
+            string lang = lang_combo_box.Text;
+
+            switch(lang)
+            {
+                case ("Polish"):
+                    App.Change_Language("pl-PL");
+                    break;
+
+                case ("English"):
+                    App.Change_Language("en-GB");
+                    break;
+
+                case ("German"):
+                    App.Change_Language("de-DE");
+                    break;
+            }
         }
     }
 }
