@@ -31,7 +31,6 @@ namespace WpfApp3
         private void age_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var r = age_slider.Value % 10;
-
             age_text_block.Text = age_slider.Value.ToString();
 
             if (r == 2 || r == 3 || r == 4)
@@ -81,10 +80,7 @@ namespace WpfApp3
                     else MessageBox.Show("Piłkarz znajduję się już na liście");
                 }
             }
-            else
-            {
-                MessageBox.Show("Wzrost zawiera błędne dane");
-            }
+            else MessageBox.Show("Wzrost zawiera błędne dane");
         }
 
         public void clearForm()
@@ -98,6 +94,15 @@ namespace WpfApp3
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            name_text_box.Text = Properties.Settings.Default.name_text_box;
+            surname_text_box.Text = Properties.Settings.Default.surname_text_box;
+            age_text_block.Text = Properties.Settings.Default.age_text_block;
+            weight_text_block.Text = Properties.Settings.Default.weight_text_block;
+            age_slider.Value = Properties.Settings.Default.age_slider;
+            weight_slider.Value = Properties.Settings.Default.weight_slider;
+            height_text_box.Text = Properties.Settings.Default.height_text_box;
+            club_combo_box.Text = Properties.Settings.Default.club_combo_box;
+
             if (File.Exists(file))
             {
                 var lines = File.ReadAllLines(file);
@@ -113,6 +118,16 @@ namespace WpfApp3
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Properties.Settings.Default.name_text_box = name_text_box.Text;
+            Properties.Settings.Default.surname_text_box = surname_text_box.Text;
+            Properties.Settings.Default.age_text_block = age_text_block.Text;
+            Properties.Settings.Default.weight_text_block = weight_text_block.Text;
+            Properties.Settings.Default.age_slider = age_slider.Value;
+            Properties.Settings.Default.weight_slider = weight_slider.Value;
+            Properties.Settings.Default.height_text_box = height_text_box.Text;
+            Properties.Settings.Default.club_combo_box = club_combo_box.Text;
+            Properties.Settings.Default.Save();
+
             if (File.Exists(file))
                 File.Delete(file);
 
@@ -127,7 +142,6 @@ namespace WpfApp3
             if (players_list_box.SelectedIndex > -1)
             {
                 var player = (Player)players_list_box.SelectedItem;
-
                 name_text_box.Text = player.Name;
                 surname_text_box.Text = player.Surname;
                 height_text_box.Text = player.Height.ToString();
@@ -140,19 +154,18 @@ namespace WpfApp3
         private void edit_button_Click(object sender, RoutedEventArgs e)
         {
             int height;
-
             if (int.TryParse(height_text_box.Text, out height)) // Zmienna height posiada juz wartość z formularza 'out height'
             {
                 if (name_text_box.Text != "" & surname_text_box.Text != "")
                 {
                     Player player = new Player(name_text_box.Text, surname_text_box.Text, (int)age_slider.Value, (int)weight_slider.Value, height, club_combo_box.Text);
+
                     if (players_list_box.SelectedIndex > -1)
                     {
                         players_list_box.Items[players_list_box.SelectedIndex] = player;
                         clearForm();
                     }
                     else MessageBox.Show("Wybierz piłkarza do edycji");
-                   
                 }
             }
             else
